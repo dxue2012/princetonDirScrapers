@@ -6,4 +6,5 @@ class PersonItem(scrapy.Item):
     phone = scrapy.Field()
     email = scrapy.Field()
     advisor = scrapy.Field()
+    bio = scrapy.Field()
     link = scrapy.Field()
