@@ -5,4 +5,5 @@ class PersonItem(scrapy.Item):
     office_address = scrapy.Field()
     phone = scrapy.Field()
     email = scrapy.Field()
+    advisor = scrapy.Field()
     link = scrapy.Field()

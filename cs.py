@@ -3,7 +3,7 @@ import scrapy
 from items import PersonItem
 
 
-class eleSpider(scrapy.Spider):
+class csSpider(scrapy.Spider):
     name = 'cs grad students'
     start_urls = ['https://www.cs.princeton.edu/people/grad']
 
