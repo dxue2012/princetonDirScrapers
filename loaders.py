@@ -1,9 +1,11 @@
 from scrapy.loader import ItemLoader
-from scrapy.loader.processors import Identity, TakeFirst, MapCompose, Join, Compose
+from scrapy.loader.processors import TakeFirst, MapCompose, Join, Compose
 
 
 def remove_last_word(str):
-    ' '.join(str.split()[0:-1])
+    if not str:
+        return ""
+    return ' '.join(str.split()[0:-1])
 
 def remove_word_advisor(str):
     if not str:
@@ -13,7 +15,10 @@ def remove_word_advisor(str):
     return ' '.join(split)
 
 def exclude_invalid_strings(str):
-    return None if "scholar.princeton.edu" in str else str
+    if "scholar.princeton.edu" in str or "http://" in str:
+        return ""
+    else:
+        return str
 
 def en_office(office):
     if office is not None and len(office.strip()) > 0:
@@ -38,7 +43,6 @@ class EconPersonLoader(ItemLoader):
     default_output_processor = TakeFirst()
 
     fullname_in = MapCompose(remove_last_word)
-    fullname_out = Identity()
 
     email_in = MapCompose(exclude_invalid_strings)
-    email_out = Join()
+    email_out = Join("")
