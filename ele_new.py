@@ -20,12 +20,3 @@ class eleSpider(scrapy.Spider):
         l.add_xpath('advisor', "div[contains(@class, 'views-field-field-academic-advisor')]/div/a/text()")
         l.add_xpath('advisor', "div[contains(@class, 'views-field-field-academic-advisor')]/div/text()")
         return l.load_item()
-    #
-        # if item['advisor'] is None:
-        #     item['advisor'] = sel.xpath(
-        #         "div[contains(@class, 'views-field-field-academic-advisor')]/div/text()"
-        #     ).extract_first()
-        #
-        # # personal link
-        # # TODO: None?
-        # return item
